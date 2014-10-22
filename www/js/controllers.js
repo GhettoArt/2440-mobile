@@ -1,11 +1,11 @@
 angular
     .module('2440.controllers', ["2440.services"])
 
-    .controller('AppCtrl', function($scope) {
+    .controller('AppCtrl', function($scope, artistsManager) {
     })
 
     .controller('ArtistsController', function($scope, artistsManager) {
-        artistsManager.getArtists();
+        $scope.artists = artistsManager.getArtists();
     })
 
     .controller('ArtistController', function($scope, $stateParams, artistsManager) {

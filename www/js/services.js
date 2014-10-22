@@ -7,7 +7,7 @@ angular
      *
      * @return {Service}
      */
-    .service("appLoader", function ($http, $q, $window) {
+    .service("appLoader", function ($http, $q, $window, $timeout) {
         this.load = function () {
             var c = $window.angular.callbacks.counter.toString(36);
 
@@ -21,7 +21,7 @@ angular
             };
             artists = $http.jsonp("http://localhost:4000/artists.json.js?callback=JSON_CALLBACK");
 
-            return $q.all(artists);
+            return $q.all([artists, $timeout(function () { return "ok"; }, 1000)]);
         };
     })
 
@@ -33,8 +33,8 @@ angular
     .service("artistsManager", function ($http) {
         var artists;
 
-        this.setArtists = function (artists) {
-            artists = artists;
+        this.setArtists = function (artistsDatas) {
+            artists = artistsDatas;
         };
 
         this.getArtists = function () {

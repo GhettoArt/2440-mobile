@@ -1,17 +1,7 @@
 angular
-.module('2440', ['ionic', '2440.controllers'])
+.module("2440", ["ionic", "2440.controllers"])
 
-.run(function($ionicPlatform, $ionicLoading, appLoader, artistsManager) {
-    var loading = appLoader.load();
-
-    $ionicLoading.show({
-        template: "loading..."
-    });
-
-    loading.then(function (artistsDatas) {
-        artistsManager.setArtists(artistsDatas.data);
-        $ionicLoading.hide();
-    });
+.run(function($ionicPlatform) {
 
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -29,50 +19,65 @@ angular
 .config(function($stateProvider, $urlRouterProvider) {
     $stateProvider
 
-        .state('app', {
+        .state("app", {
             url: "/app",
             abstract: true,
             templateUrl: "templates/menu.html",
-            controller: 'AppCtrl'
+            controller: "AppCtrl",
+            resolve: {
+                "datas": function (appLoader, artistsManager, $ionicLoading) {
+                    var loading = appLoader.load();
+
+                    $ionicLoading.show({
+                        template: "loading..."
+                    });
+
+                    loading.then(function (datas) {
+                        artistsManager.setArtists(datas[0].data);
+                        $ionicLoading.hide();
+                    });
+                    return loading;
+                }
+            }
         })
 
-        .state('app.search', {
+        .state("app.search", {
             url: "/search",
             views: {
-                'menuContent' :{
+                "menuContent" :{
                     templateUrl: "templates/search.html"
                 }
             }
         })
 
-        .state('app.browse', {
+        .state("app.browse", {
             url: "/browse",
             views: {
-                'menuContent' :{
+                "menuContent" :{
                     templateUrl: "templates/browse.html"
                 }
             }
         })
-        .state('app.artists', {
+        .state("app.artists", {
             url: "/artists",
             views: {
-                'menuContent' :{
+                "menuContent" :{
                     templateUrl: "templates/artists.html",
-                    controller: 'ArtistsController'
+                    controller: "ArtistsController"
                 }
             }
         })
 
-        .state('app.single', {
+        .state("app.single", {
             url: "/artists/:artistId",
             views: {
-                'menuContent' :{
+                "menuContent" :{
                     templateUrl: "templates/artist.html",
-                    controller: 'ArtistController'
+                    controller: "ArtistController"
                 }
             }
         });
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/artists');
+    $urlRouterProvider.otherwise("/app/artists");
 });
 
