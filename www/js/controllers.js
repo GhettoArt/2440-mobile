@@ -4,6 +4,9 @@ angular
     .controller('AppCtrl', function($scope, artistsManager) {
     })
 
+    .controller('InfoController', function($scope) {
+    })
+
     .controller('ArtistsController', function($scope, artistsManager) {
         $scope.artists = artistsManager.getArtists();
     })

@@ -1,3 +1,10 @@
+/*
+ * TODO find a way to put those variables inside a 
+ * config object
+ * */
+
+var artistsUrl = "http://localhost:4000/artists.json.js";
+
 angular
     .module("2440.services", [])
 
@@ -19,9 +26,8 @@ angular
                 $window.angular.callbacks['_' + c](data);
                 delete $window['angularcallbacks_' + c];
             };
-            artists = $http.jsonp("http://localhost:4000/artists.json.js?callback=JSON_CALLBACK");
-
-            return $q.all([artists, $timeout(function () { return "ok"; }, 1000)]);
+            artists = $http.jsonp(artistsUrl + "?callback=JSON_CALLBACK");
+            return $q.all([artists, $timeout(function () { return "loaded"; }, 1000)]);
         };
     })
 
