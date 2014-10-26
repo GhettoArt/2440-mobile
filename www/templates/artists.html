@@ -4,7 +4,7 @@
     </ion-nav-buttons>
     <ion-content class="has-header">
         <ion-list>
-            <ion-item ng-repeat="artist in artists" href="#/app/artists/{{artist.id}}">
+            <ion-item ng-repeat="artist in artists | orderBy:'name'" href="#/app/artists/{{artist.id}}">
                 {{artist.name}}
             </ion-item>
         </ion-list>

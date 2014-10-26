@@ -1,7 +1,7 @@
 {
-  "name": "felix",
+  "name": "2440m",
   "version": "1.0.0",
-  "description": "felix: An Ionic project",
+  "description": "The official 2440 fest mobile app",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^0.7.1",
