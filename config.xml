@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <widget id="com.ionicframework.felix590073" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>felix</name>
+  <name>2440m</name>
   <description>
-        An Ionic Framework and Cordova project.
+        The official 2440 fest mobile app
     </description>
   <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+      Thomas Belin
     </author>
   <content src="index.html"/>
   <access origin="*"/>
