@@ -65,8 +65,13 @@
                 });
             };
 
+            /**
+             * getArtists - returns a copy of the artists list
+             *
+             * @return {Array} the artists list
+             */
             this.getArtists = function () {
-                return artists;
+                return artists.map(function (element) { return element; });
             };
 
             this.getArtist = function (id) {

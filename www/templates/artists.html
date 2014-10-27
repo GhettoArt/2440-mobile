@@ -1,10 +1,16 @@
 <ion-view title="Artists">
+    <ion-header-bar class="bar-subheader">
+        <div class="button-bar">
+            <button ng-click="currentOrder = 'alpha'" class="button button-light" ng-class="{ current: currentOrder === 'alpha' }">alpha</button>
+            <button ng-click="currentOrder = 'stage'" class="button button-light" ng-class="{ current: currentOrder === 'stage' }">stage</button>
+        </div>
+    </ion-header-bar>
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
     <ion-content class="has-header">
         <ion-list>
-            <ion-item ng-repeat="artist in artists" href="#/app/artists/{{artist.id}}">
+            <ion-item ng-repeat="artist in artists" ng-class="{ section: artist.type === 'section' }">
                 {{artist.name}}
             </ion-item>
         </ion-list>
