@@ -4,12 +4,16 @@ button.button.current {
 
 
 ion-item.section {
-    clear: both;
+    background-color: black;
+    color: white;
+    font-weight: bold;
 }
 
 ion-item.artist {
-    float: left;
-    width: 25%;
-    height: 25%;
-    color: red;
+}
+
+ion-item.artist .actions {
+    position: absolute;
+    right: 10px;
+    font-size: 17pt;
 }

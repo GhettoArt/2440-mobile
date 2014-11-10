@@ -19,7 +19,11 @@
             <div data-ng-repeat="(section, artists) in sections">
                 <ion-item class="section" data-ng-bind="section"></ion-item>
                 <ion-item class="artist" ng-repeat="artist in artists" href="#/app/artists/{{artist.id}}">
-                    {{artist.name}} 
+                    <div class="actions">
+                        <i class="icon" data-ng-class="{ 'ion-ios7-star-outline': !isFavorited(artist), 'ion-ios7-star': isFavorited(artist) }" ng-click="favorite(artist); $event.preventDefault()"></i>
+                    </div>
+                    <img src="artist.image" height=50 width=50>
+                    {{artist.name}}
                 </ion-item>
             </div>
         </ion-list>

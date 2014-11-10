@@ -12,6 +12,8 @@
         })
 
         .controller("ArtistsController", function($scope, artistsManager) {
+            $scope.favorites = [];
+
             $scope.availableSorts = {
                 "date": {
                     name: "Dates",
@@ -37,6 +39,14 @@
 
                 $scope.sections = sections;
                 $scope.currentOrder = method;
+            };
+
+            $scope.isFavorited = function (artist) {
+                return $scope.favorites.indexOf(artist) !== -1;
+            };
+
+            $scope.favorite = function (artist) {
+                $scope.favorites.push(artist);
             };
 
             $scope.order("date");
