@@ -1,18 +1,28 @@
 <ion-view title="Artists">
+
     <ion-header-bar class="bar-subheader">
         <div class="button-bar">
-            <button ng-click="currentOrder = 'alpha'" class="button button-light" ng-class="{ current: currentOrder === 'alpha' }">alpha</button>
-            <button ng-click="currentOrder = 'stage'" class="button button-light" ng-class="{ current: currentOrder === 'stage' }">stage</button>
+            <button
+                ng-repeat="(sort, config) in availableSorts"
+                ng-click="order(sort)" class="button button-light"
+                ng-class="{ current: currentOrder === sort}"
+                data-ng-bind="config.name"></button>
         </div>
     </ion-header-bar>
+
     <ion-nav-buttons side="left">
         <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
     </ion-nav-buttons>
+
     <ion-content class="has-header">
         <ion-list>
-            <ion-item ng-repeat="artist in artists" ng-class="{ section: artist.type === 'section' }">
-                {{artist.name}}
-            </ion-item>
+            <div data-ng-repeat="(section, artists) in sections">
+                <ion-item class="section" data-ng-bind="section"></ion-item>
+                <ion-item class="artist" ng-repeat="artist in artists" href="#/app/artists/{{artist.id}}">
+                    {{artist.name}} 
+                </ion-item>
+            </div>
         </ion-list>
     </ion-content>
+
 </ion-view>

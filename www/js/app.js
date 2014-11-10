@@ -58,7 +58,8 @@
                     views: {
                         "menuContent" :{
                             templateUrl: "templates/artists.html",
-                            controller: "ArtistsController"
+                            controller: "ArtistsController",
+                            controllerAs: "artists"
                         }
                     }
                 })

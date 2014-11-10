@@ -1,3 +1,15 @@
 button.button.current {
     box-shadow: 1px 1px 10px #CCC inset;
 }
+
+
+ion-item.section {
+    clear: both;
+}
+
+ion-item.artist {
+    float: left;
+    width: 25%;
+    height: 25%;
+    color: red;
+}

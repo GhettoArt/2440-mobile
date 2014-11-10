@@ -12,42 +12,34 @@
         })
 
         .controller("ArtistsController", function($scope, artistsManager) {
-            $scope.artists = artistsManager.getArtists();
+            $scope.availableSorts = {
+                "date": {
+                    name: "Dates",
+                    property: "date"
+                },
 
-            $scope.currentOrder = "stage";
-
-            $scope.order = function (method) {
-                switch (method) {
-                    case "stage":
-                        var stages = {},
-                            art = artistsManager.getArtists().sort(function (a1, a2) {
-                                if (a1.stage === a2.stage) { return 0; }
-                                return a1.stage > a2.stage ? 1 : -1;
-                            });
-
-                        for (var i in art) {
-                            var stage = art[i].stage;
-                            if (!stages[stage]) { stages[stage] = i; }
-                            stages[stage] = Math.min(stages[stage], i);
-                        }
-
-                        for (i in stages) {
-                            art.splice(stages[i] - 1, 0, { type: "stage", name: i });
-                        }
-                        $scope.artists = art;
-                        break;
-                    case "alpha":
-                        $scope.artists = artistsManager.getArtists().sort(function (a1, a2) {
-                            if (a1.name === a2.name) { return 0; }
-                            return a1.name > a2.name ? 1 : -1;
-                        });
-                        break;
+                "stage": {
+                    name: "Scènes",
+                    property: "stage"
                 }
             };
 
-            $scope.$watch("currentOrder", function (newOrder, oldOrder, scope) {
-                scope.order(newOrder);
-            });
+            $scope.order = function (method) {
+                var sortConfig = $scope.availableSorts[method], 
+                    sections = {},
+                    artists = artistsManager.getArtists();
+
+                for (var i in artists) {
+                    var section = artists[i][sortConfig.property];
+                    if (!sections[section]) { sections[section] = []; }
+                    sections[section].push(artists[i]);
+                }
+
+                $scope.sections = sections;
+                $scope.currentOrder = method;
+            };
+
+            $scope.order("date");
 
         })
 
