@@ -1,6 +1,11 @@
 <ion-view title="{{artist.name}}">
-    <ion-content class="has-header">
-        <h1 data-ng-bind="artist.name"></h1>
+    <ion-content class="has-header artist-page">
+        <header>
+            <img data-ng-src="{{ artist.image }}">
+            <h1 data-ng-bind="artist.name"></h1>
+        </header>
+        <div data-ng-bind="artist.stage"></div>
+        <div data-ng-bind="artist.hour"></div>
         <div data-ng-bind="artist.description"></div>
     </ion-content>
 </ion-view>
