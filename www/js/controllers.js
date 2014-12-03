@@ -11,7 +11,7 @@
         .controller("InfoController", function($scope) {
         })
 
-        .controller("ArtistsController", function($scope, artistsManager) {
+        .controller("ArtistsController", function($scope, artistsManager, calendarManager) {
             $scope.favorites = [];
 
             $scope.availableSorts = {
@@ -42,15 +42,15 @@
             };
 
             $scope.isFavorited = function (artist) {
-                return $scope.favorites.indexOf(artist) !== -1;
+                return calendarManager.isAdded(artist);
             };
 
             $scope.favorite = function (artist) {
+                calendarManager.add(artist);
                 $scope.favorites.push(artist);
             };
 
             $scope.order("date");
-
         })
 
         .controller("ArtistController", function($scope, $stateParams, artistsManager) {

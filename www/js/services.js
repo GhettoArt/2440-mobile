@@ -8,7 +8,7 @@
     var artistsUrl = "http://192.168.1.79:4000/artists.json.js";
 
     angular
-        .module("2440.services", ['ngCordova'])
+        .module("2440.services", ["ngCordova"])
 
         /**
          * the inital service that will takes care of loading all the
@@ -91,5 +91,33 @@
                 }
                 return null;
             };
-        });
+        })
+
+        .service("calendarManager", function ($window, $cordovaCalendar) {
+            var added = [];
+
+            this.isAdded = function (artist) {
+                return added.reduce(function (previous, current) {
+                    return previous || current.id === artist.id;
+                }, false);
+            };
+
+            this.add = function (artist) {
+                added.push(artist);
+                var endDate = new Date(artist.datetime);
+                endDate.setHours(endDate.getHours() + 1);
+                if (!$window.plugins) {
+                    console.log("event added");
+                    console.log(artist.datetime, endDate);
+                    return;
+                }
+                $cordovaCalendar.createEvent({
+                    title: artist.name,
+                    location: "2440 Festival",
+                    startDate: artist.datetime,
+                    endDate: endDate
+                }).then(function (result) {}, function (err) {});
+            };
+        })
+        ;
 }(window.angular));
