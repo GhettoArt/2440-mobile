@@ -61,6 +61,15 @@
                 artists = $http.jsonp(artistsUrl + "?callback=JSON_CALLBACK");
                 return artists.success(function (data) {
                     artists = data;
+                    artists.map(function (art) {
+                        var dateStr = (art.date + " " + art.hour)
+                            .replace(/\w* /, "")
+                            .replace("Mai", "May 2015");
+
+                        art.datetime = new Date(dateStr + " UTC");
+
+                        art.image = "http://images.teamsugar.com/files/usr/1/13255/wtf.jpg"; //XXX to remove when real images are added to the backend
+                    });
                     $window.localStorage.setItem("artists", JSON.stringify(data));
                 });
             };
