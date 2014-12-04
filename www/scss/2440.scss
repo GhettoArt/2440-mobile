@@ -18,29 +18,47 @@ ion-item.section {
     font-weight: bold;
 }
 
-ion-item.artist img {
-    float: left;
+ion-item.artist {
+    img {
+        float: left;
+        margin-right: 0.5em;
+    }
+    .time {
+        color: grey;
+        font-size: 10pt;
+    }
+     .actions {
+        position: absolute;
+        right: 10px;
+        font-size: 17pt;
+    }
 }
 
-ion-item.artist .actions {
-    position: absolute;
-    right: 10px;
-    font-size: 17pt;
-}
+.artist-page {
+    font-size: 12pt;
+    img {
+        width: 100%;
+    }
+    header {
+        position: relative;
+        h1 {
+            position: absolute;
+            bottom: 0;
+            color: white;
+            background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 50%, transparent);
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    }
 
-.artist-page img {
-    width: 100%;
-}
-.artist-page header {
-    position: relative;
-}
-
-.artist-page header h1 {
-    position: absolute;
-    bottom: 0;
-    color: white;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.75) 50%, transparent);
-    width: 100%;
-    margin: 0;
-    padding: 0;
+    .subheader {
+        div {
+            padding: 0.5em 0;
+            font-size: 1.5em;
+            width: 49%;
+            text-align: center;
+            display: inline-block;
+        }
+    }
 }
