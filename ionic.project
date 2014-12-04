@@ -1,4 +1,9 @@
 {
   "name": "2440m",
-  "app_id": ""
+  "app_id": "",
+  "watchPatterns": [
+    "www/**/*",
+    "!www/**/*.scss",
+    "!www/lib/**/*"
+  ]
 }

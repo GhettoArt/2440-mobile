@@ -1,5 +1,15 @@
+
+$ionicons-font-path: "../lib/ionic/fonts";
+$stable: #E6CA88;
+$bar-stable-text: #FFF;
+
+@import "../lib/ionic/scss/ionic";
+
+button.button {
+    border: none;
+}
 button.button.current {
-    box-shadow: 1px 1px 10px #CCC inset;
+    border-bottom: 5px solid rgba(94, 154, 255, 1);
 }
 
 ion-item.section {
@@ -8,7 +18,8 @@ ion-item.section {
     font-weight: bold;
 }
 
-ion-item.artist {
+ion-item.artist img {
+    float: left;
 }
 
 ion-item.artist .actions {
@@ -23,6 +34,7 @@ ion-item.artist .actions {
 .artist-page header {
     position: relative;
 }
+
 .artist-page header h1 {
     position: absolute;
     bottom: 0;
