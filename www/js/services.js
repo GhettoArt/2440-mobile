@@ -5,7 +5,7 @@
  * */
 (function (angular) {
     "use strict";
-    var artistsUrl = "http://192.168.1.79:4000/artists.json.js";
+    var artistsUrl = "http://192.168.1.28:4000/artists.json.js";
 
     angular
         .module("2440.services", ["ngCordova"])
