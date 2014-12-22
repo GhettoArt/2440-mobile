@@ -5,7 +5,7 @@
  * */
 (function (angular) {
     "use strict";
-    var artistsUrl = "http://192.168.1.28:4000/artists.json.js";
+    var serverLocation = "http://192.168.1.28:4000";
 
     angular
         .module("2440.services", ["ngCordova"])
@@ -58,7 +58,7 @@
                     $window.angular.callbacks["_" + c](data);
                     delete $window["angularcallbacks_" + c];
                 };
-                artists = $http.jsonp(artistsUrl + "?callback=JSON_CALLBACK");
+                artists = $http.jsonp(serverLocation + "/artists.json.js" + "?callback=JSON_CALLBACK");
                 return artists.success(function (data) {
                     artists = data;
                     artists.map(function (art) {
@@ -68,7 +68,7 @@
 
                         art.datetime = new Date(dateStr + " UTC");
 
-                        art.image = "http://images.teamsugar.com/files/usr/1/13255/wtf.jpg"; //XXX to remove when real images are added to the backend
+                        art.image = serverLocation + art.image;
                     });
                     $window.localStorage.setItem("artists", JSON.stringify(data));
                 });
