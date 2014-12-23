@@ -22,7 +22,7 @@
                     <div class="actions">
                         <i class="icon" data-ng-class="{ 'ion-ios7-star-outline': !isFavorited(artist), 'ion-ios7-star': isFavorited(artist) }" ng-click="favorite(artist); $event.preventDefault()"></i>
                     </div>
-                    <img data-ng-src="{{artist.image}}" height=50 width=50>
+                    <img data-ng-src="{{artist.thumbnail}}" height=50 width=50>
                     <div data-ng-bind="artist.name"></div>
                     <div class="time"><i class="icon ion-clock"></i> <span data-ng-bind="artist.hour"></span></div>
                 </ion-item>

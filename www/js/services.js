@@ -5,7 +5,7 @@
  * */
 (function (angular) {
     "use strict";
-    var serverLocation = "http://192.168.1.28:4000";
+    var serverLocation = "http://www.2440.fr";
 
     angular
         .module("2440.services", ["ngCordova"])
@@ -67,8 +67,6 @@
                             .replace("Mai", "May 2015");
 
                         art.datetime = new Date(dateStr + " UTC");
-
-                        art.image = serverLocation + art.image;
                     });
                     $window.localStorage.setItem("artists", JSON.stringify(data));
                 });
@@ -85,7 +83,7 @@
 
             this.getArtist = function (id) {
                 for (var a in artists) {
-                    if (artists[a].id === id) {
+                    if (artists[a].id == id) {
                         return artists[a];
                     }
                 }
