@@ -26,6 +26,16 @@
                 }
             };
 
+            $scope.refresh = function () {
+                $scope.refreshing = true;
+                artistsManager
+                    .load(true)
+                    .then(function () {
+                        $scope.order("date");
+                        $scope.refreshing = false;
+                    });
+            };
+
             $scope.order = function (method) {
                 var sortConfig = $scope.availableSorts[method], 
                     sections = {},
